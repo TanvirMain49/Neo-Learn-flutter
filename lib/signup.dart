@@ -1,12 +1,43 @@
+import 'package:first_project/auth/auth.service.dart';
 import 'package:first_project/signIn.dart';
 import 'package:first_project/welcome.dart';
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  @override
   Widget build(BuildContext context) {
+
+    final _emailControlar = TextEditingController();
+    final _passwordcontrolar = TextEditingController();
+    final _confermpassword = TextEditingController();
+
+    void singUp() async{
+      final email = _emailControlar.text;
+      final password = _passwordcontrolar.text;
+      final confermPass = _confermpassword.text;
+      final authService = AuthServices();
+      if(password != confermPass){
+        print("Password don't match");
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password don't match")));
+      }
+
+      try{
+        await authService.signUpWithEmailAndPassword(email, password);
+        if(mounted){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sing Up Complated")));
+        }
+      } catch(e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+      }
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -103,6 +134,7 @@ class SignupPage extends StatelessWidget {
 
                   // Email field
                   TextField(
+                    controller: _emailControlar,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     autocorrect: false,
