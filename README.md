@@ -1,16 +1,62 @@
-# first_project
+# NeoLearn Flutter App
 
-A new Flutter project.
+A Flutter project with a **Welcome page**, **Sign Up**, and **Sign In** functionality, integrated with **Supabase** for authentication.
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application with user authentication.
 
-A few resources to get you started if this is your first Flutter project:
+### Screens & Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Welcome Page:**  
+  The first screen users see. It displays the **NeoLearn logo** prominently and provides two main action buttons:
+    1. **Sign Up** → Navigate to the registration page.
+    2. **Sign In** → Navigate to the login page.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  This screen sets the tone for the app and provides a clear path for new and returning users.
+
+  **Screenshot:**  
+  ![Welcome Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/iqjbpgwgxbaplinefv44.png)
+
+- **Sign Up Page:**  
+  Allows new users to register using email and password. Includes:
+    - Email input
+    - Password & confirm password fields
+    - Validation for empty fields and password match
+    - Snackbar messages for errors and success
+    - Supabase `signUp()` integration
+
+  **Screenshot:**  
+  ![Sign Up Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292625/hlh12eq26wtwb8wb9xka.png)
+
+- **Sign In Page:**  
+  Allows existing users to log in. Features:
+    - Email & password input
+    - Validation for empty fields
+    - Supabase `signInWithPassword()` integration
+    - Error feedback via Snackbars
+
+  **Screenshot:**  
+  ![Sign In Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/wp7pvpv9qazbhyhsynvd.png)
+
+
+### Resources
+
+If you are new to Flutter:
+
+- [Flutter: Write your first app](https://docs.flutter.dev/get-started/codelab)
+- [Flutter Cookbook](https://docs.flutter.dev/cookbook)
+
+If you are new to Supabase:
+
+- [Supabase Flutter Docs](https://supabase.com/docs/guides/with-flutter)
+
+---
+
+## Getting Started With This Project
+
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
