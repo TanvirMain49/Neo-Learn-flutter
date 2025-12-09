@@ -8,8 +8,6 @@ A Flutter project with a **Welcome page**, **Sign Up**, and **Sign In** function
 
 This project is a starting point for a Flutter application with user authentication.
 
-### Screens & Features
-
 - **Welcome Page:**  
   The first screen users see. It displays the **NeoLearn logo** prominently and provides two main action buttons:
     1. **Sign Up** → Navigate to the registration page.
@@ -18,7 +16,7 @@ This project is a starting point for a Flutter application with user authenticat
   This screen sets the tone for the app and provides a clear path for new and returning users.
 
   **Screenshot:**  
-  ![Welcome Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/iqjbpgwgxbaplinefv44.png)
+  <img src="https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/iqjbpgwgxbaplinefv44.png" alt="Welcome Page" width="400"/>
 
 - **Sign Up Page:**  
   Allows new users to register using email and password. Includes:
@@ -29,7 +27,7 @@ This project is a starting point for a Flutter application with user authenticat
     - Supabase `signUp()` integration
 
   **Screenshot:**  
-  ![Sign Up Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292625/hlh12eq26wtwb8wb9xka.png)
+  <img src="https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292625/hlh12eq26wtwb8wb9xka.png" alt="Sign Up Page" width="400"/>
 
 - **Sign In Page:**  
   Allows existing users to log in. Features:
@@ -39,7 +37,8 @@ This project is a starting point for a Flutter application with user authenticat
     - Error feedback via Snackbars
 
   **Screenshot:**  
-  ![Sign In Page](https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/wp7pvpv9qazbhyhsynvd.png)
+  <img src="https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292624/wp7pvpv9qazbhyhsynvd.png" alt="Sign In Page" width="400"/>
+
 
 
 ### Resources
@@ -59,4 +58,4 @@ If you are new to Supabase:
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/TanvirMain49/Neo-Learn-flutter
