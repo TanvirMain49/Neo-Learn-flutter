@@ -24,7 +24,6 @@ This project is a starting point for a Flutter application with user authenticat
     - Password & confirm password fields
     - Validation for empty fields and password match
     - Snackbar messages for errors and success
-    - Supabase `signUp()` integration
 
   **Screenshot:**  
   <img src="https://res.cloudinary.com/dvrn5hqsv/image/upload/v1765292625/hlh12eq26wtwb8wb9xka.png" alt="Sign Up Page" width="400"/>
@@ -33,7 +32,6 @@ This project is a starting point for a Flutter application with user authenticat
   Allows existing users to log in. Features:
     - Email & password input
     - Validation for empty fields
-    - Supabase `signInWithPassword()` integration
     - Error feedback via Snackbars
 
   **Screenshot:**  
