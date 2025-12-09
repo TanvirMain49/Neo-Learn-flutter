@@ -13,29 +13,56 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
+    
+    final _emailController = TextEditingController();
+    final _passwordController = TextEditingController();
+    final _confirmPasswordController = TextEditingController();
 
-    final _emailControlar = TextEditingController();
-    final _passwordcontrolar = TextEditingController();
-    final _confermpassword = TextEditingController();
 
+    // sign up function or algorithm
     void singUp() async{
-      final email = _emailControlar.text;
-      final password = _passwordcontrolar.text;
-      final confermPass = _confermpassword.text;
-      final authService = AuthServices();
-      if(password != confermPass){
-        print("Password don't match");
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password don't match")));
+
+      // Take all field values and trim them
+      // Check that all fields are filled
+      // Check if the password and confirm password match
+      // Then call the signInWith...() function to complete the registration
+      // If mounted, show a SnackBar so the user knows the registration was successful
+
+
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+      final confirmPassword = _confirmPasswordController.text.trim();
+      final authService = AuthServices(); //from auth.service
+
+
+      if(email.isEmpty || password.isEmpty || confirmPassword.isEmpty){
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("All fields are required!")),
+        );
+        return;
       }
 
+      if (password != confirmPassword) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Passwords do not match")),
+        );
+        return;
+      }
+      
       try{
         await authService.signUpWithEmailAndPassword(email, password);
-        if(mounted){
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sing Up Complated")));
-        }
+        if(mounted) return;
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Signup successful!")),
+        );
+
       } catch(e){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("$e"))
+        );
       }
+      
     }
 
     return Scaffold(
@@ -134,7 +161,7 @@ class _SignupPageState extends State<SignupPage> {
 
                   // Email field
                   TextField(
-                    controller: _emailControlar,
+                    controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     autocorrect: false,
@@ -160,6 +187,7 @@ class _SignupPageState extends State<SignupPage> {
 
                   // Password field
                   TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     textInputAction: TextInputAction.next,
                     autocorrect: false,
@@ -185,6 +213,7 @@ class _SignupPageState extends State<SignupPage> {
 
                   // Confirm Password field
                   TextField(
+                    controller: _confirmPasswordController,
                     obscureText: true,
                     textInputAction: TextInputAction.done,
                     autocorrect: false,
@@ -210,7 +239,9 @@ class _SignupPageState extends State<SignupPage> {
 
                   // Sign Up Button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      singUp();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
