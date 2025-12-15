@@ -1,12 +1,36 @@
+import 'package:first_project/auth/auth.service.dart';
 import 'package:first_project/signup.dart';
 import 'package:first_project/welcome.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  @override
   Widget build(BuildContext context) {
+
+    final emailController = TextEditingController();
+    final passwordController= TextEditingController();
+    final authService = AuthServices(); //from auth.service
+
+    void singIn()async{
+      final email = emailController.text;
+      final password = passwordController.text;
+
+      try{
+        await authService.signInWithEmailAndPassword(email, password);
+        if(!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sing in Succesfull") ));
+      }catch(e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+      }
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -104,6 +128,7 @@ class SignInPage extends StatelessWidget {
 
                   // Email Field
                   TextField(
+                    controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     autocorrect: false,
@@ -133,6 +158,7 @@ class SignInPage extends StatelessWidget {
 
                   // Password Field
                   TextField(
+                    controller: passwordController,
                     obscureText: true,
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(fontSize: 16, color: Colors.black87),
@@ -159,7 +185,9 @@ class SignInPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Sign In Button
-                 ElevatedButton(onPressed: (){},
+                 ElevatedButton(onPressed: (){
+                   singIn();
+                 },
                      style: ElevatedButton.styleFrom(
                        backgroundColor: Colors.deepPurple,
                        foregroundColor: Colors.white,

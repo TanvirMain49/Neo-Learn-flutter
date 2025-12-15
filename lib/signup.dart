@@ -51,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
       
       try{
         await authService.signUpWithEmailAndPassword(email, password);
-        if(mounted) return;
+        if(!mounted) return;
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Signup successful!")),
@@ -125,7 +125,7 @@ class _SignupPageState extends State<SignupPage> {
             alignment: Alignment.bottomCenter,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.7,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.only(
@@ -147,7 +147,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   const Center(
                     child: Text(
                       "Sign up to get started",
@@ -157,7 +157,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 18),
 
                   // Email field
                   TextField(
