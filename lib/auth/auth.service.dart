@@ -40,4 +40,13 @@ class AuthServices {
       throw "Failed to sign out. Please try again.";
     }
   }
+
+  Future<void> singOut() async{
+    return await _supabase.auth.signOut();
+  }
+  String? getCurrentUser(){
+    final session = _supabase.auth.currentSession;
+    final user = session!.user;
+    return user.email;
+  }
 }

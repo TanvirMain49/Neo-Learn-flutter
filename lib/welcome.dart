@@ -1,3 +1,4 @@
+import 'package:first_project/auth/auth_gate.dart';
 import 'package:first_project/signIn.dart';
 import 'package:first_project/signup.dart';
 import 'package:flutter/material.dart';
@@ -71,9 +72,10 @@ class WelcomePage extends StatelessWidget {
                     // Sign In Button
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => const SignInPage()),
+                          MaterialPageRoute(builder: (_) => const AuthGate()),
+                              (route) => false,
                         );
                       },
                       style: ElevatedButton.styleFrom(
